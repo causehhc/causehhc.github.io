@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>脑瘫</title>
-      <link>https://causehhc.github.io/2021/04/blabla/</link>
-      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://causehhc.github.io/2021/04/blabla/</guid>
-      <description>VFT 本项目包含3部分 系统基本功能 用户功能 特色功能 用户网页路由 MySql数据库设计 Redis数据库设计 系统基本功能 根据RSS收集信息 整合信息（聚</description>
-    </item>
-    
-    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://causehhc.github.io/2019/03/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
