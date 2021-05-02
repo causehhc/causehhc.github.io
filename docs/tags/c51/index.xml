@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C51 on causehhc&#39;s blog</title>
+    <link>https://causehhc.github.io/tags/c51/</link>
+    <description>Recent content in C51 on causehhc&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://causehhc.github.io/tags/c51/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ubuntu1604升级python版本到37</title>
+      <link>https://causehhc.github.io/2021/04/ubuntu1604-upgrade-python-version-to-37/</link>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2021/04/ubuntu1604-upgrade-python-version-to-37/</guid>
+      <description>下载一些依赖项 sudo apt-get install \ python-dev \ python-setuptools \ python-pip \ python-smbus \ build-essential \ libncursesw5-dev \ libgdbm-dev \ libc6-dev \ zlib1g-dev \ libsqlite3-dev \ tk-dev \ libssl-dev \ openssl \ libffi-dev 新建临时文件夹并进入，完成测试后可将本文件夹删除 mkdir py37_tmp &amp;amp;&amp;amp; cd py37_tmp 下载p</description>
+    </item>
+    
+    <item>
+      <title>使用frp实现内网穿透</title>
+      <link>https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/</link>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/</guid>
+      <description>一、简述 首先说明我们为什么要实现内网穿透、是因为其他用户需要访问到我们在内网中部署的一些服务，而一般我们的入网设备是没有被分配到公网ip的，</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(1)Keil软件安装步骤</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev1/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev1/</guid>
+      <description>1、Keil软件安装步骤 1.1、安装详细步骤 1. 从官网得到Keil安装包（MDK-Arm）： https://www.keil.com/download/product/ 图 1-1 Keil官网下载界面 2. 在非系统盘（除c盘外）</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(2)Keil导入设备系列包</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev2/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev2/</guid>
+      <description>2、Keil导入设备系列包 2.1、导入芯片包详细步骤 1. 下载芯片包 Keil5不像Keil4那样自带了很多厂商的MCU型号，Kei5需要自己安装</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(3)构建工程模板</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev3/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev3/</guid>
+      <description>3、构建工程模板 首先查看【工程模板文件结构】 左侧为Keil自动生成的文件，其中绿色部分为文件夹，橙色部分为文件。 右侧为我们自己添加的文件，红</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(4)配置工程参数</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev4/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev4/</guid>
+      <description>4、配置工程参数 4.1、打开工程模板 首先打开工程模板，这是一个基础模板，之后可以在其基础上进行增量编程，由于可能需要被使用很多次，所以首先将</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(5)烧写测试程序</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev5/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev5/</guid>
+      <description>5、烧写测试程序 5.1、编译目标文件 在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。 分别是【Translate】、【</description>
+    </item>
+    
+    <item>
+      <title>Keil(STM32)开发环境-(6)程序编写与基本调试</title>
+      <link>https://causehhc.github.io/2020/07/keilstm32dev6/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/keilstm32dev6/</guid>
+      <description>6、程序编写与基本调试 6.1、新建文件 通过我们之前对构建工程模板的学习，我们应该了解在创建文件时，一般需要将.c文件与.h文件一起添加。同时</description>
+    </item>
+    
+    <item>
+      <title>Clion&#43;STM32CubeMX使用指南</title>
+      <link>https://causehhc.github.io/2020/06/clion-stm32cubemx-user-guide/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/06/clion-stm32cubemx-user-guide/</guid>
+      <description>〇、软件清单 STM32CubeMX Clion en.stsw-link009.zip —— ST-Link V2的驱动，Clion需要更新一下这个驱动 gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe —— win下的arm架构交叉编译环境 java1.8.0_261-jdk java1.8.0_261-jre LLVM-9.0.0-win64.exe —— c编译器，我VScode搭</description>
+    </item>
+    
+    <item>
+      <title>【迷宫小车】基于51单片机的迷宫电脑鼠的设计</title>
+      <link>https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/</link>
+      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/</guid>
+      <description>一、简介 课设题目，这里简单总结一下思路。 二、功能分析 任意穿行 （寻找终点） 实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现</description>
+    </item>
+    
+    <item>
+      <title>_template</title>
+      <link>https://causehhc.github.io/1/01/_template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/1/01/_template/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://causehhc.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/about/</guid>
+      <description>github: https://github.com/causehhc mail: hhc404404@gmail.com Wechat: HHC404 </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+        【迷宫小车】基于51单片机的迷宫电脑鼠的设计 - causehhc&#39;s blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="一、简介 课设题目，这里简单总结一下思路。 二、功能分析 任意穿行 （寻找终点） 实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现" />
+    <meta name="generator" content="Hugo 0.81.0 with theme pure" />
+    <title>【迷宫小车】基于51单片机的迷宫电脑鼠的设计 - causehhc&#39;s blog</title>
+    
+    
+    <link rel="stylesheet" href="https://causehhc.github.io/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="【迷宫小车】基于51单片机的迷宫电脑鼠的设计" />
+<meta property="og:description" content="一、简介 课设题目，这里简单总结一下思路。 二、功能分析 任意穿行 （寻找终点） 实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-02T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-02T00:00:00&#43;00:00" />
+
+<meta itemprop="name" content="【迷宫小车】基于51单片机的迷宫电脑鼠的设计">
+<meta itemprop="description" content="一、简介 课设题目，这里简单总结一下思路。 二、功能分析 任意穿行 （寻找终点） 实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现"><meta itemprop="datePublished" content="2020-01-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2624">
+<meta itemprop="keywords" content="C51," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【迷宫小车】基于51单片机的迷宫电脑鼠的设计"/>
+<meta name="twitter:description" content="一、简介 课设题目，这里简单总结一下思路。 二、功能分析 任意穿行 （寻找终点） 实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-white" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/causehhc" target="_blank">
+            <img class="img-circle img-rotate" src="https://causehhc.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">causehhc</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Chongqing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="Type something..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"> Tags</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://causehhc.github.io/tags/c51/" class="tag-list-link" rel="1">c51<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/clion/" class="tag-list-link" rel="1">clion<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/jetbrains/" class="tag-list-link" rel="1">jetbrains<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/keil/" class="tag-list-link" rel="6">keil<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/python/" class="tag-list-link" rel="1">python<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/stm32/" class="tag-list-link" rel="7">stm32<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/ubuntu/" class="tag-list-link" rel="2">ubuntu<span
+               class="tag-list-count">2</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> Categories</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/other/" class="category-list-link">other</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-list-link">嵌入式</a><span class="category-list-count">9</span></li>
+        </ul>
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2021/04/ubuntu1604-upgrade-python-version-to-37/" class="title">ubuntu1604升级python版本到37</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-04-11</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/" class="title">使用frp实现内网穿透</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-04-11</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev1/" class="title">Keil(STM32)开发环境-(1)Keil软件安装步骤</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev2/" class="title">Keil(STM32)开发环境-(2)Keil导入设备系列包</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev3/" class="title">Keil(STM32)开发环境-(3)构建工程模板</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">Catalogue</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/01/design-of-a-car-in-maze-based-on-c51/"
+    >【迷宫小车】基于51单片机的迷宫电脑鼠的设计</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/" class="article-date">
+  <time datetime="2020-01-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-01-02</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"> 嵌入式 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/c51/"> C51 </a>
+  </span>
+
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/01/design-of-a-car-in-maze-based-on-c51/#comments"
+            class="article-comment-link">Comments</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 2624 words</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 6 minutes </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="一简介">一、简介</h1>
+<p>课设题目，这里简单总结一下思路。</p>
+<h1 id="二功能分析">二、功能分析</h1>
+<ol>
+<li>任意穿行 <strong>（寻找终点）</strong><br>
+实现对步进电机的控制，包括正转反转及调速；对电机动作组进行封装，实现各种标准动作（前进一格，左转，右转，掉头，修正）。</li>
+<li>记录信息 <strong>（遍历迷宫）</strong><br>
+通过建立8*8迷宫数组，在低四位以绝对方向记录墙的信息，高四位记录来的方向。以便后期分析和回溯。</li>
+<li>最短路径 <strong>（BFS算法）</strong><br>
+利用广度优先算法计算等高表，从终点反向查找最短路径。</li>
+</ol>
+<h1 id="三硬件驱动程序">三、硬件驱动程序</h1>
+<h2 id="1数码管驱动">1、数码管驱动</h2>
+<pre><code>//数码管驱动程序
+sbit tube1 = P4^3;
+sbit tube2 = P4^2;
+uchar table[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,  0x88,0x83,0xc6,0xa1,0x86,0x8e,0x00};
+void view1(uchar num){
+	tube1=1;tube2=0;P0=table[num];
+}
+void view2(uchar num){
+	tube1=0;tube2=1;P0=table[num];
+}
+</code></pre>
+<h2 id="2红外传感器组驱动">2、红外传感器组驱动</h2>
+<pre><code>//红外传感器组驱动程序
+sbit A0 = P4^0;
+sbit A1 = P2^0;
+sbit A2 = P2^7;
+sbit irR1 = P2^1;
+sbit irR2 = P2^2;
+sbit irR3 = P2^3;
+sbit irR4 = P2^4;
+sbit irR5 = P2^5;
+bit irC=0, irL=0, irR=0, irLU=0, irRU=0;
+void init_tim2(uint us){  // 初始化TIM2
+	EA = 1;
+	ET2 = 1;
+	TH2 = RCAP2H = (65536-us)/256;
+	TL2 = RCAP2L = (65536-us)%256;
+	TR2 = 1;
+}
+void ir_on(uchar num){  // 开启第num-1号红外发射级
+	A0 = (num)&amp;0x01;
+	A1 = (num)&amp;0x02;
+	A2 = (num)&amp;0x04;
+}
+uchar get_ir(uchar num){
+  if(num==1) return irL;
+  else if(num==2) return irLU;
+  else if(num==3) return irC;
+  else if(num==4) return irRU;
+  else if(num==5) return irR;
+  else return 0;
+}
+void ir_test(){ // 测试某个方向的红外
+	while(1){
+		if(irL||irR||irC){
+			beep = 0;
+		}else{
+			beep = 1;
+		}
+	}
+}
+void tim2() interrupt 5{ // TIM2中断服务函数
+	static bit ir = 0;
+	static unsigned char n=1;
+	TF2 = 0;
+	if(!ir)	{
+		ir_on(n-1);
+	}else{
+		if(n==1){
+			if(irR1)	irC=0;
+			else			irC=1;
+		}else if(n==2){
+			if(irR2)	irLU=0;
+			else			irLU=1;
+		}else if(n==3){
+			if(irR3)	irL=0;
+			else			irL=1;
+		}else if(n==4){
+			if(irR4)	irR=0;
+			else			irR=1;
+		}else if(n==5){
+			if(irR5)	irRU=0;
+			else			irRU=1;
+		}
+	}
+	if(ir)	n++;
+	if(n&gt;5)	n=1;
+	ir=~ir;
+}
+</code></pre>
+<h2 id="3步进电机驱动">3、步进电机驱动</h2>
+<pre><code>//步进电机驱动程序
+void write_pin(uchar temp){
+  P1 = temp;
+}
+void delay(uint z){  // 延时函数
+	uchar i, j;
+	while(--z){
+		_nop_();
+		i=2;
+		j=199;
+		do{
+			while(--j);
+		}while(--i);
+	}
+}
+uchar forward[]={0x11,0x33,0x22,0x66,0x44,0xcc,0x88,0x99};
+uchar reverse[]={0x11,0x99,0x88,0xcc,0x44,0x66,0x22,0x33};
+uchar for_rev[]={0x11,0x93,0x82,0xc6,0x44,0x6c,0x28,0x39};
+static uint step = 0;
+uchar fix_path(uchar i){  // 路线修正
+    step = 0;
+    while((get_ir(2)||get_ir(4)) &amp;&amp; !get_ir(3)){
+        if(get_ir(2))	write_pin(forward[i++] | 0xf0);
+        else if(get_ir(4))	write_pin(reverse[i++] | 0x0f);
+        if(i==8)	i=0;
+        step++;
+        delay(3);
+    }
+    return i;
+}
+void go_rel(uchar relD){  // 向某个相对方向前进一格
+    uchar num;
+    uchar i, j;
+    if(relD == 0) num = 104;
+    if(relD == 1||relD == 3) num = 48;
+    if(relD == 2) num = 100;
+
+    for(j=0;j&lt;num;j++){
+        for(i=0;i&lt;8;i++){
+            if(relD == 1||relD == 2)	write_pin(forward[i]);
+            if(relD == 3)	write_pin(reverse[i]);
+            if(relD == 0){
+                write_pin(for_rev[i]);
+                i = fix_path(i);
+            }
+            if(relD==0)	num -= step/16;
+            delay(3);
+        }
+    }
+}
+</code></pre>
+<h1 id="四算法分析">四、算法分析</h1>
+<h2 id="1遍历迷宫">1、遍历迷宫</h2>
+<p>遍历迷宫（回溯法）的一般流程如下：
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8f1ae59c83b442b8c5814f970241a60~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h3 id="11定义绝对方向和相对方向">1.1、定义绝对方向和相对方向</h3>
+<pre><code>//算法部分
+/** 绝对方向（以迷宫左上为参照）：       相对方向：
+  *     0           											0:直行
+  * 3       1       											1:右转
+  *     2           											2:掉头
+  *                 											3:左转
+**/
+/** 工具函数集（0）：一些必要的初始化及通用函数
+	* 	初始化数组
+	*		高四位记录来的方
+	*		低四位依据绝对方向记录记录四周信息（默认来的方向无墙）
+**/
+void init_map(uchar map[SIZE][SIZE]){  // 初始化数组
+  uchar i, j;
+  for(i=0;i&lt;SIZE;i++){
+    for(j=0;j&lt;SIZE;j++){
+      map[i][j] = 0xff;
+    }
+  }
+}
+uchar abs_to_rel(uchar absD, uchar absD_t){  // 绝对方向-&gt;相对方向
+	//absD：当前绝对方向
+	//absD_t：期望转换到哪个绝对方向
+  uchar relD = 0;
+  relD = (absD_t - absD) % 4;
+  if(relD &gt; 127)	relD += 4;
+	//返回相对方向
+  return relD;
+}
+</code></pre>
+<h3 id="12记录当前坐标的迷宫信息">1.2、记录当前坐标的迷宫信息</h3>
+<p>当前坐标为初始值时（说明没走过）记录信息，高四位记录来的方向，低四位依据绝对方向记录四周信息。由于在整个行进过程中（遍历阶段）迷宫数组的值只会被写入一次，这保证了在高四位中始终记录的是最开始时小车进入的方向。依此特点，小车可以在回溯或冲刺时有效安全地使用这些信息。</p>
+<pre><code>/** 关键函数集（1）：记录信息
+	* 	当前坐标为初始值时，记录信息：
+	*			高四位记录来的方向
+	*			低四位依据绝对方向记录记录四周信息（默认来的方向无墙）
+**/
+uchar read_ir(uchar relD){ // 读取相对方向的红外值
+    if(relD == 0) return get_ir(3);  // 前红外
+    if(relD == 1) return get_ir(5);  // 右红外
+    if(relD == 3) return get_ir(1);  // 左红外
+    return 0;
+}
+void collect_info(uchar maze[SIZE][SIZE], xyTypeDef now, uchar absD){ // 记录信息
+  if(maze[now.y][now.x] == 0xff){  // 如果当前坐标未被写入，则写入（整个过程中低四位只写入一次）
+    uchar val_wall = 0xf0;
+    uchar k = 0;
+    uchar i;
+    for(i=0; i&lt;4; i++){  // 循环判断4个绝对方向
+      k = read_ir(abs_to_rel(absD, i));
+      val_wall |= (k&lt;&lt;i);
+    }
+    maze[now.y][now.x] &amp;= val_wall;  // 将墙的信息写入低四位
+    maze[now.y][now.x] &amp;= ((absD&lt;&lt;4)|0x0f);  // 将来的方向写入高四位
+  }
+}
+</code></pre>
+<h3 id="13选择一个方向">1.3、选择一个方向</h3>
+<p>更具记录的迷宫数组信息，选择一个合适的方向。扫描四轴，如果存在没走过的格子，直接返回这个方向。如果四周都走过，那么读取本坐标的高四位来的方向，选择回溯方向。</p>
+<pre><code>/** 关键函数集（2）：选择方向
+	* 	根据记录的迷宫数组信息，选择合适的方向
+	*			扫描四周，如果存在没走过的格子，直接走之
+	*			如果四周都走过，那么读取高四位来的方向，进行回溯
+**/
+uchar is_path(uchar maze[SIZE][SIZE], xyTypeDef now, uchar absD){ // 判断此方向是否连通
+  return !((maze[now.y][now.x]&gt;&gt;absD)&amp;0x01);
+}
+uchar is_new(uchar maze[SIZE][SIZE], xyTypeDef now, uchar absD){  // 判断此方向是否为新格子
+  if(absD==0) return (maze[now.y-1][now.x]&gt;&gt;4)==0x0f;
+  if(absD==1) return (maze[now.y][now.x+1]&gt;&gt;4)==0x0f;
+  if(absD==2) return (maze[now.y+1][now.x]&gt;&gt;4)==0x0f;
+  if(absD==3) return (maze[now.y][now.x-1]&gt;&gt;4)==0x0f;
+  return 0;
+}
+uchar search_dir(uchar maze[SIZE][SIZE], xyTypeDef now, uchar flag){ // 选择方向
+  uchar i;
+  uchar pre = maze[now.y][now.x] &gt;&gt; 4;
+  uchar back;
+  if(!flag){ // 冲刺标记位，如果不冲刺，则需要扫描四个方向是否可走
+    for(i=0; i&lt;4; i++){
+      if(is_path(maze, now, i) &amp;&amp; is_new(maze, now, i)){ // 判断该方向是否有墙和是否走过
+        return i;
+      }
+    }
+  }
+	// 如果冲刺或者四个方向不可走，直接读取高四位进行冲刺引导或回溯
+  if(pre&lt;=1) back = pre+2;
+  if(pre&gt;=2) back = pre-2;
+  return back;
+}
+</code></pre>
+<h3 id="14向这个方向前进">1.4、向这个方向前进</h3>
+<p>这方面没啥说的，动起来就对了。</p>
+<pre><code>/** 关键函数集（3）：执行
+	* 	根据上一步得到的信息，执行
+**/
+void go_to_next(xyTypeDef *now, uchar *absD, uchar absD_t){
+  uchar relD = abs_to_rel(*absD, absD_t);
+  // 刷新当前坐标和当前绝对方向
+	if(absD_t == 0) (now-&gt;y)--;
+  if(absD_t == 1) (now-&gt;x)++;
+  if(absD_t == 2) (now-&gt;y)++;
+  if(absD_t == 3) (now-&gt;x)--;
+  *absD = absD_t;
+	// 执行
+	go_rel(relD);
+	if(relD != 0)	go_rel(0);
+}
+</code></pre>
+<h2 id="2最短路径">2、最短路径</h2>
+<h3 id="21建立等高表">2.1、建立等高表</h3>
+<p>等高表原理类似于等高线，在选定起点后，与其相连的点可以设置为该点高度值+1，利用广度优先算法遍历迷宫格，本迷宫的等高表数值为：
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/18c902d37a60470b8fdfdeca534bfc88~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<p>将其可视化后，它的形状类似一座山。
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf8a608c8c646d6aea90e8a63012c93~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h3 id="22反向查找">2.2、反向查找</h3>
+<p>既然等高表概念理解了，那么寻找最短路径就是从山顶扔下一颗球，由重力选择的路径即为最短路径。（在机器学习领域会有一个局部最优概念，这里不阐述）</p>
+<pre><code>/** 关键函数集（4）：寻找最优路径
+	* 	回溯到起点后，开始根据广度优先算法寻找最优路径
+				（1）首先根据之前记录的迷宫数组建立等高表
+				（2）根据等高表反向记录最优路径
+				（3）将路径记录到迷宫数组的高四位，这样可以复用之前的结构，将小车引导至终点
+**/
+bit bfs(uchar maze[SIZE][SIZE],xyTypeDef beg, xyTypeDef end){ // 广度优先算法
+  //参数初始化
+	uchar height[SIZE][SIZE] = {0xff};  // 初始化等高表
+  xyTypeDef queue_xy[15]; // 初始化队列（经过测试，长度管够）
+  uchar queue_len = 1;  // 初始化队列长度标记量
+  xyTypeDef queue_head;  // 初始化队头
+  uchar j, i;  // 初始化迭代下标
+  xyTypeDef temp;  // 初始化一个临时变量
+  xyTypeDef now;  // 初始化当前位置
+
+  init_map(height);
+  height[beg.y][beg.x] = 0;
+  queue_xy[0].x = beg.x;
+  queue_xy[0].y = beg.y;
+  while(queue_len&gt;0){  // 当队列不为空
+    queue_head = queue_xy[0];  // 队首元素出队
+    queue_len--;
+    for(j=0; j&lt;queue_len; j++){  // （由于用数组模拟队列，所以需要将所有元素手动前移）
+      queue_xy[j] = queue_xy[j+1];
+    }
+    for(i=0; i&lt;4; i++){  // 判断四个方向
+      temp = queue_head;
+      if(i == 0)  temp.y = queue_head.y-1;
+      if(i == 1)  temp.x = queue_head.x+1;
+      if(i == 2)  temp.y = queue_head.y+1;
+      if(i == 3)  temp.x = queue_head.x-1;
+      if(temp.x&gt;127||temp.y&gt;127)  continue;
+      if(is_path(maze, queue_head, i) &amp;&amp; height[temp.y][temp.x]==255){  // 如果该坐标连通且第一次访问
+        height[temp.y][temp.x] = height[queue_head.y][queue_head.x] + 1;  // 该坐标等高表+1
+        queue_xy[queue_len++] = temp;  // 该坐标入队
+      }
+    }
+  }
+	
+	// 等高表建立完毕，开始反向查找最优路径
+  now.x = end.x;
+  now.y = end.y;
+  while(!(now.x==0&amp;&amp; now.y==0)){  // 如果还没到起点
+    for(i=0; i&lt;4; i++){  // 扫描四个方向
+      temp = now;
+      if(i == 0)  temp.y = now.y-1;
+      if(i == 1)  temp.x = now.x+1;
+      if(i == 2)  temp.y = now.y+1;
+      if(i == 3)  temp.x = now.x-1;
+      if(temp.x&gt;127||temp.y&gt;127)  continue;
+      if(is_path(maze, now, i) &amp;&amp; (height[temp.y][temp.x]==height[now.y][now.x]-1)){  // 如果该坐标连通且高度递减
+        maze[temp.y][temp.x] |= 0xf0; // 初始化迷宫数组该坐标的高四位
+        maze[temp.y][temp.x] &amp;= ((i&lt;&lt;4)|0x0f);  // 将这个方向写入高四位
+        now = temp;  // 切换焦点
+        break;
+      }
+    }
+  }
+  return 1;
+}
+</code></pre>
+<h1 id="五-整体架构">五、 整体架构</h1>
+<pre><code>int main() {
+	uchar maze[SIZE][SIZE] = {0xff}; // 定义迷宫数组，整个迷宫的数据均存储在这里
+  uchar absD = 1;	// 定义开始时的绝对方向
+  uchar absD_t;		// 定义目标方向（暂无）
+  bit flag = 0;		// 定义冲刺标记量
+
+  xyTypeDef beg;	// 定义起点坐标
+  xyTypeDef now;	// 定义当前坐标
+  xyTypeDef end;	// 定义终点坐标
+  beg.x = 0;
+  beg.y = 0;
+  now = beg;
+  end.x = 7;
+  end.y = 7;
+
+  init_map(maze);
+  init_tim2(5000);
+	//ir_test();
+
+  while(1){
+    if(now.x==end.x&amp;&amp;now.y==end.y&amp;&amp;flag){ // 如果冲刺完毕，退出程序
+      beep = 0; delay(100); beep = 1;
+      break;
+    }
+    if(now.x==beg.x&amp;&amp;now.y==beg.y&amp;&amp;absD==3){  // 如果回溯到起点，开始冲刺
+      beep = 0; delay(100); beep = 1;
+      flag = bfs(maze, beg, end);
+    }
+		
+    collect_info(maze, now, absD);				// （1）记录迷宫信息
+    absD_t = search_dir(maze, now, flag);	// （2）确定下一个方向
+    go_to_next(&amp;now, &amp;absD, absD_t);			// （3）执行该方向
+
+    delay(1000);  // 延时，便于手扶
+		view1(now.x); view2(now.y);  // 刷新数码管显示当前坐标
+  }
+  while(1);
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>Permalink: </strong>
+      <a href="https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/" title="【迷宫小车】基于51单片机的迷宫电脑鼠的设计" target="_blank" rel="external">https://causehhc.github.io/2020/01/design-of-a-car-in-maze-based-on-c51/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/causehhc" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://causehhc.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/causehhc" target="_blank"><span class="text-dark">causehhc</span><small class="ml-1x"></small></a></h3>
+        <div>In solitude, be interested in yourself.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+<section id="comments">
+    <div id="vcomments"></div>
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://causehhc.github.io/1/01/_template/" title="_template"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;Older</span></a>
+            </li>
+            <li class="next">
+                <a href="https://causehhc.github.io/2020/06/clion-stm32cubemx-user-guide/"
+                    title="Clion&#43;STM32CubeMX使用指南"><span>Newer&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="Catalogue" role="button">
+                    <span>[&nbsp;</span><span>Catalogue</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/causehhc" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://causehhc.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://causehhc.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://causehhc.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            ROOT_URL: 'https:\/\/causehhc.github.io\/',
+            CONTENT_URL: 'https:\/\/causehhc.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://causehhc.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine"></script>
+<script type="text/javascript">
+    var GUEST = ['nick', 'mail', 'link'];
+    var meta = '';
+    meta = meta.split(',').filter(function (item) {
+        return GUEST.indexOf(item) > -1;
+    });
+    new Valine({
+        el: '#vcomments',
+        verify: null ,
+        notify: null ,
+        appId: 'aV4WUNo7f4EIAS1R3bFN3LcY-gzGzoHsz',
+        appKey: 'T5l2QyK4n5uuSI1QtekMBrEO',
+        placeholder: '',
+        avatar: '',
+        meta: meta,
+        pageSize: '' || 10,
+        visitor: null 
+});
+</script>
+
+  </body>
+</html>

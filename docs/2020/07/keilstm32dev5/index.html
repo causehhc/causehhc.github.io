@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+        Keil(STM32)开发环境-(5)烧写测试程序 - causehhc&#39;s blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="5、烧写测试程序 5.1、编译目标文件 在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。 分别是【Translate】、【" />
+    <meta name="generator" content="Hugo 0.81.0 with theme pure" />
+    <title>Keil(STM32)开发环境-(5)烧写测试程序 - causehhc&#39;s blog</title>
+    
+    
+    <link rel="stylesheet" href="https://causehhc.github.io/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Keil(STM32)开发环境-(5)烧写测试程序" />
+<meta property="og:description" content="5、烧写测试程序 5.1、编译目标文件 在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。 分别是【Translate】、【" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://causehhc.github.io/2020/07/keilstm32dev5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-07-01T00:00:00&#43;00:00" />
+
+<meta itemprop="name" content="Keil(STM32)开发环境-(5)烧写测试程序">
+<meta itemprop="description" content="5、烧写测试程序 5.1、编译目标文件 在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。 分别是【Translate】、【"><meta itemprop="datePublished" content="2020-07-01T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-07-01T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1284">
+<meta itemprop="keywords" content="STM32,Keil," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Keil(STM32)开发环境-(5)烧写测试程序"/>
+<meta name="twitter:description" content="5、烧写测试程序 5.1、编译目标文件 在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。 分别是【Translate】、【"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-white" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/causehhc" target="_blank">
+            <img class="img-circle img-rotate" src="https://causehhc.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">causehhc</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Chongqing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="Type something..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"> Tags</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://causehhc.github.io/tags/c51/" class="tag-list-link" rel="1">c51<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/clion/" class="tag-list-link" rel="1">clion<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/jetbrains/" class="tag-list-link" rel="1">jetbrains<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/keil/" class="tag-list-link" rel="6">keil<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/python/" class="tag-list-link" rel="1">python<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/stm32/" class="tag-list-link" rel="7">stm32<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://causehhc.github.io/tags/ubuntu/" class="tag-list-link" rel="2">ubuntu<span
+               class="tag-list-count">2</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> Categories</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/other/" class="category-list-link">other</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://causehhc.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-list-link">嵌入式</a><span class="category-list-count">9</span></li>
+        </ul>
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2021/04/ubuntu1604-upgrade-python-version-to-37/" class="title">ubuntu1604升级python版本到37</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-04-11</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/" class="title">使用frp实现内网穿透</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-04-11</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev1/" class="title">Keil(STM32)开发环境-(1)Keil软件安装步骤</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev2/" class="title">Keil(STM32)开发环境-(2)Keil导入设备系列包</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://causehhc.github.io/2020/07/keilstm32dev3/" class="title">Keil(STM32)开发环境-(3)构建工程模板</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">Catalogue</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/07/keilstm32dev5/"
+    >Keil(STM32)开发环境-(5)烧写测试程序</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://causehhc.github.io/2020/07/keilstm32dev5/" class="article-date">
+  <time datetime="2020-07-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-07-01</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"> 嵌入式 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/stm32/"> STM32 </a>
+    <a class="article-tag-link" href="/tags/keil/"> Keil </a>
+  </span>
+
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/07/keilstm32dev5/#comments"
+            class="article-comment-link">Comments</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1284 words</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 3 minutes </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="5烧写测试程序">5、烧写测试程序</h2>
+<h3 id="51编译目标文件">5.1、编译目标文件</h3>
+<p>在烧写程序之前，需要对目标工程进行编译链接，这里keil有三种编译模式。
+分别是【Translate】、【Build】、【Rebuild】。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ada1ede579ba4096bb9c56af733dc40e~tplv-k3u1fbpfcp-watermark.image" alt="38.png"><br>
+<code>图 5-1 按钮在界面中的位置</code></p>
+<h4 id="1-translate">1. 【Translate】</h4>
+<p>编译当前源文件，这个过程中会进行语法错误的检查，但是不生成可执行文件，一般在修改.c文件后，点击这个按钮，用来查看修改后的程序是否有语法错误。
+因为只是编译当前的单个文件，所以编译速度快。</p>
+<h4 id="2-build最常用">2. 【Build】（最常用）</h4>
+<p>编译工程中的目标文件，目标文件通常指上次修改的文件以及其他依赖于这些修改过的文件的模块，同时重新链接生成可执行文件。如果工程之前没有编译链接过，它会直接调用【Rebuild】进行全部工程所以文件的编译链接。</p>
+<h4 id="3-rebuild">3. 【Rebuild】</h4>
+<p>重新编译工程中所有源文件，于上次编译的结果无关，不管工程的文件之前有没有编译过，都会对所有文件重新进行编译并生成可执行文件。
+因此花费时间较长，平时使用较少。</p>
+<h3 id="52程序下载烧写程序">5.2、程序下载/烧写程序</h3>
+<h4 id="1-st-link-v2下载器介绍">1. ST-LINK V2下载器介绍</h4>
+<p>ST-Link是用于STM8和STM32微控制器的在线调试器和编程器，也就是下载器。ST-Link具有SWIM、JATG/SWD等通信接口。</p>
+<ul>
+<li>SWIM：Single Wire Interface Module，单线接口模块。</li>
+<li>JATG：Joint Test Action Group，联合测试工作组，是一种国际标准测试协议。</li>
+<li>SWD：Serial Wire Debugging，串行调试接口。
+其中我们使用SWD方式进行程序下载与调试。</li>
+</ul>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/78f1fad49e494a00a4f531cda7f8c5ba~tplv-k3u1fbpfcp-watermark.image" alt="39.png"><br>
+<code>图 5-2 ST-Link下载器正视图</code>
+值得注意的是，在正面的接口标识层有一个白色实心框，这对应着后面的引脚，可以通过这种方法确定引脚位置和名称（如下图）。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1464734cb78e4933ae2ba26e9718ef57~tplv-k3u1fbpfcp-watermark.image" alt="40.png"><br>
+<code>图 5-3 ST-Link下载器侧视图</code></p>
+<h4 id="2-开发板下载接口介绍">2. 开发板下载接口介绍</h4>
+<p>在下图中框选的位置就是利用ST-Link下载器下载程序的4个引脚。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/654de62a5677478db37980941bb0b20e~tplv-k3u1fbpfcp-watermark.image" alt="41.png"><br>
+<code>图 5-4 开发板正视图</code>
+其中各自的名称在旁边的电路板丝印已经被写明，为了更加直观，在下图中为大家标注出来。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3695694de6e40eaa2ed1c5a0c237152~tplv-k3u1fbpfcp-watermark.image" alt="42.png"><br>
+<code>图 5-5 开发板上的SWD下载引脚</code></p>
+<h4 id="3-开发板与下载器连接方法">3. 开发板与下载器连接方法</h4>
+<p>连接方法就是使用杜邦线，与双方引脚对应连接。</p>
+<ul>
+<li>下载器的SWDIO引脚 &ndash;连接&ndash; 开发板的SWDIO引脚</li>
+<li>下载器的GND引脚   &ndash;连接&ndash; 开发板的GND引脚</li>
+<li>下载器的SWCLK引脚 &ndash;连接&ndash; 开发板的SWCLK引脚</li>
+<li>下载器的3.3V引脚   &ndash;连接&ndash; 开发板的VCC引脚
+值得注意的是，他们的引脚并不是一一对应的，所以需要打乱杜邦线的顺序进行连接，为了避免引起歧义，就不放上图片进行展示。
+<strong>一定要正确连接，错误连接可能导致开发板或下载器烧毁！</strong></li>
+</ul>
+<h4 id="4-安装st-link驱动">4. 安装st-link驱动</h4>
+<p>（1）. 右键计算机，查看本系统是64还是32</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e620fe5789ce498b8f15543288ba1271~tplv-k3u1fbpfcp-watermark.image" alt="43.png"><br>
+<code>图 5-6 查看本机系统</code>
+（2）. 下载的st-link驱动安装包，双击安装</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eacea0e8100a46fd99e206727fc57868~tplv-k3u1fbpfcp-watermark.image" alt="44.png"><br>
+<code>图 5-7 ST-Link驱动安装程序</code>
+（3）. 如果安装成功，完成电脑-下载器-开发板连接后，下载器上的红色指示灯会常亮。如果安装失败，下载器上的红色指示灯会闪烁，请尝试重新安装。</p>
+<h4 id="5-在keil软件中点击下载">5. 在Keil软件中点击下载</h4>
+<p>连接完毕后，即可点击下载按钮进行下载。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85d5283e171243a7972f3f53d30f9899~tplv-k3u1fbpfcp-watermark.image" alt="45.png"><br>
+<code>图 5-8 按钮在界面中的位置</code>
+出现此提示说明下载成功。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2b95cf91544d8da4f3f76205c5d58d~tplv-k3u1fbpfcp-watermark.image" alt="46.png"><br>
+<code>图 5-9 程序下载成功</code></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>Permalink: </strong>
+      <a href="https://causehhc.github.io/2020/07/keilstm32dev5/" title="Keil(STM32)开发环境-(5)烧写测试程序" target="_blank" rel="external">https://causehhc.github.io/2020/07/keilstm32dev5/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/causehhc" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://causehhc.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/causehhc" target="_blank"><span class="text-dark">causehhc</span><small class="ml-1x"></small></a></h3>
+        <div>In solitude, be interested in yourself.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+<section id="comments">
+    <div id="vcomments"></div>
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://causehhc.github.io/2020/07/keilstm32dev6/" title="Keil(STM32)开发环境-(6)程序编写与基本调试"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;Older</span></a>
+            </li>
+            <li class="next">
+                <a href="https://causehhc.github.io/2020/07/keilstm32dev4/"
+                    title="Keil(STM32)开发环境-(4)配置工程参数"><span>Newer&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="Catalogue" role="button">
+                    <span>[&nbsp;</span><span>Catalogue</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/causehhc" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://causehhc.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://causehhc.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://causehhc.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            ROOT_URL: 'https:\/\/causehhc.github.io\/',
+            CONTENT_URL: 'https:\/\/causehhc.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://causehhc.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine"></script>
+<script type="text/javascript">
+    var GUEST = ['nick', 'mail', 'link'];
+    var meta = '';
+    meta = meta.split(',').filter(function (item) {
+        return GUEST.indexOf(item) > -1;
+    });
+    new Valine({
+        el: '#vcomments',
+        verify: null ,
+        notify: null ,
+        appId: 'aV4WUNo7f4EIAS1R3bFN3LcY-gzGzoHsz',
+        appKey: 'T5l2QyK4n5uuSI1QtekMBrEO',
+        placeholder: '',
+        avatar: '',
+        meta: meta,
+        pageSize: '' || 10,
+        visitor: null 
+});
+</script>
+
+  </body>
+</html>
