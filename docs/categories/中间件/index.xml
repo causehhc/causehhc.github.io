@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>基于FPGA的16位单周期CPU设计</title>
+      <link>https://causehhc.github.io/2020/07/design-of-16-bit-single-cycle-cpu-based-on-fpga/</link>
+      <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2020/07/design-of-16-bit-single-cycle-cpu-based-on-fpga/</guid>
+      <description>基于FPGA的16位单周期CPU设计 一、实验过程 1、ALU程序设计； 数据通路调用这个模块，根据得到的控制信号对输入数据进行处理，处理功能有：</description>
+    </item>
+    
+    <item>
       <title>Keil(STM32)开发环境-(1)Keil软件安装步骤</title>
       <link>https://causehhc.github.io/2020/07/keilstm32dev1/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>

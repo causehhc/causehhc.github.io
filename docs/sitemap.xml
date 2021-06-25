@@ -73,6 +73,20 @@
   </url>
   
   <url>
+    <loc>https://causehhc.github.io/tags/fpga/</loc>
+    <lastmod>2020-07-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/2020/07/design-of-16-bit-single-cycle-cpu-based-on-fpga/</loc>
+    <lastmod>2020-07-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://causehhc.github.io/tags/keil/</loc>
     <lastmod>2020-07-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
