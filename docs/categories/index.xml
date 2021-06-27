@@ -6,10 +6,28 @@
     <description>Recent content in Categories on causehhc&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://causehhc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>stm32底盘电机驱动</title>
+      <link>https://causehhc.github.io/2021/06/stm32driver/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2021/06/stm32driver/</guid>
+      <description>stm32driver stm32底盘电机驱动 一、功能 1、搭载FreeRTOS 2、不定长数据接收（IDLE+DMA） 3、I2C显示屏（电机参数） 4、增量式PI控制</description>
+    </item>
+    
+    <item>
+      <title>ESP8266模块实现python服务端与stm32客户端的数据传输</title>
+      <link>https://causehhc.github.io/2021/05/flask-stm32-datatrans/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2021/05/flask-stm32-datatrans/</guid>
+      <description>Flask-stm32-dataTrans 利用ESP8266模块实现python服务端与stm32客户端的数据传输。 本项目包含两个项目： flaskProject stm32Project 一、整体方案 本项目使用ESP8266-W</description>
+    </item>
     
     <item>
       <title>ubuntu1604升级python版本到37</title>
