@@ -5,6 +5,7 @@ date = "2020-06-25"
 description = ""
 tags = ["STM32","Clion","JetBrains"]
 categories = ["嵌入式"]
+
 +++
 
 ## 〇、软件清单
@@ -124,4 +125,3 @@ pycharm、idea、goland都是jetbrains一家公司的，它们有统一的界面
 3. 在clion中，如果遇到找不到某种编译器，请检查是否正确安装本机编译器与交叉编译器。
 4. 下载程序时提示XXXLevel-Low，请更新ST-LINK V2驱动。
 5. 如果使用在线调试功能，请在ToolChain中Debug下选择：XXX\GNU Tools ARM Embedded\5.4 2016q3\bin\arm-none-eabi-gdb.exe。
-
