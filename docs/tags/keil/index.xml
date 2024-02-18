@@ -5,11 +5,21 @@
     <link>https://causehhc.github.io/tags/keil/</link>
     <description>Recent content in Keil on causehhc&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <copyright>CC BY 4.0 CN</copyright>
     <lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://causehhc.github.io/tags/keil/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dedicated server use OpenVPN for LAN Multiplayer Game</title>
+      <link>https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/</link>
+      <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/</guid>
+      <description>1. Overview x. Link Old method: 使用frp实现内网穿透</description>
+    </item>
     
     <item>
       <title>stm32底盘电机驱动</title>
