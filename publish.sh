@@ -1,4 +1,4 @@
-./hugo.exe -d docs && 
+../hugo.exe -d docs && 
 git init && 
 git add . && 
 git commit -m "commit" && 
