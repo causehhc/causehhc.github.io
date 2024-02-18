@@ -17,7 +17,7 @@
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/</guid>
-      <description>1. Overview x. Link Old method: 使用frp实现内网穿透</description>
+      <description>1. Overview SERVER | | | CLIENT_1 - CLIENT_2 - CLIENT_3 2. Server 2.1 Install OpenVPN sudo apt-get install openvpn 2.2 Establish PKI OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have ca.crt, server.crt, server.key, dh2048.pem under /etc/openvpn/. A sample file will be used here (it works but is not safe), please refer to 6.Link/OpenVPN detail for details. ca.crt: sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/ server.crt: sudo</description>
     </item>
     
     <item>

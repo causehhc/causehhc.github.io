@@ -20,7 +20,7 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="1. Overview x. Link Old method: 使用frp实现内网穿透" />
+    <meta name="description" content="1. Overview SERVER | | | CLIENT_1 - CLIENT_2 - CLIENT_3 2. Server 2.1 Install OpenVPN sudo apt-get install openvpn 2.2 Establish PKI OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have ca.crt, server.crt, server.key, dh2048.pem under /etc/openvpn/. A sample file will be used here (it works but is not safe), please refer to 6.Link/OpenVPN detail for details. ca.crt: sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/ server.crt: sudo" />
     <meta name="generator" content="Hugo 0.122.0 with theme pure" />
     <title>Dedicated server use OpenVPN for LAN Multiplayer Game - causehhc&#39;s blog</title>
     
@@ -30,18 +30,18 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
     <meta property="og:title" content="Dedicated server use OpenVPN for LAN Multiplayer Game" />
-<meta property="og:description" content="1. Overview x. Link Old method: 使用frp实现内网穿透" />
+<meta property="og:description" content="1. Overview SERVER | | | CLIENT_1 - CLIENT_2 - CLIENT_3 2. Server 2.1 Install OpenVPN sudo apt-get install openvpn 2.2 Establish PKI OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have ca.crt, server.crt, server.key, dh2048.pem under /etc/openvpn/. A sample file will be used here (it works but is not safe), please refer to 6.Link/OpenVPN detail for details. ca.crt: sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/ server.crt: sudo" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-02-18T00:00:00+00:00" />
 
 <meta itemprop="name" content="Dedicated server use OpenVPN for LAN Multiplayer Game">
-<meta itemprop="description" content="1. Overview x. Link Old method: 使用frp实现内网穿透"><meta itemprop="datePublished" content="2024-02-18T00:00:00+00:00" />
+<meta itemprop="description" content="1. Overview SERVER | | | CLIENT_1 - CLIENT_2 - CLIENT_3 2. Server 2.1 Install OpenVPN sudo apt-get install openvpn 2.2 Establish PKI OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have ca.crt, server.crt, server.key, dh2048.pem under /etc/openvpn/. A sample file will be used here (it works but is not safe), please refer to 6.Link/OpenVPN detail for details. ca.crt: sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/ server.crt: sudo"><meta itemprop="datePublished" content="2024-02-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-02-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="17">
+<meta itemprop="wordCount" content="504">
 <meta itemprop="keywords" content="Ubuntu," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Dedicated server use OpenVPN for LAN Multiplayer Game"/>
-<meta name="twitter:description" content="1. Overview x. Link Old method: 使用frp实现内网穿透"/>
+<meta name="twitter:description" content="1. Overview SERVER | | | CLIENT_1 - CLIENT_2 - CLIENT_3 2. Server 2.1 Install OpenVPN sudo apt-get install openvpn 2.2 Establish PKI OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have ca.crt, server.crt, server.key, dh2048.pem under /etc/openvpn/. A sample file will be used here (it works but is not safe), please refer to 6.Link/OpenVPN detail for details. ca.crt: sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/ server.crt: sudo"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -325,17 +325,125 @@ function tagCloud(where, min, max) {
 	</span>
         <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/#comments"
             class="article-comment-link">Comments</a></span>
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 17 words</span>
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 1 minutes </span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 504 words</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 2 minutes </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
       <h2 id="1-overview">1. Overview</h2>
-<!-- raw HTML omitted -->
-<p><img src="../../../posts/static/Dedicated%20server%20use%20OpenVPN%20for%20LAN%20Multiplayer%20Game/1.png" alt="png_test"></p>
-<h2 id="x-link">x. Link</h2>
+<pre><code class="language-log">SERVER
+|          |          | 
+CLIENT_1 - CLIENT_2 - CLIENT_3
+</code></pre>
+<h2 id="2-server">2. Server</h2>
+<h3 id="21-install-openvpn">2.1 Install OpenVPN</h3>
+<p><code>sudo apt-get install openvpn</code></p>
+<h3 id="22-establish-pki">2.2 Establish PKI</h3>
+<p>OpenVPN Needs to establish a PKI (public key infrastructure), Simply, you need to have <code>ca.crt</code>, <code>server.crt</code>, <code>server.key</code>, <code>dh2048.pem</code> under <code>/etc/openvpn/</code>.</p>
+<p>A sample file will be used here (it works but is <strong>not safe</strong>), please refer to <code>6.Link/OpenVPN detail</code> for details.</p>
 <ul>
-<li>Old method: <a href="https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration">使用frp实现内网穿透</a></li>
+<li>ca.crt: <code>sudo cp /usr/share/doc/openvpn/examples/sample-keys/ca.crt /etc/openvpn/</code></li>
+<li>server.crt: <code>sudo gunzip -c /usr/share/doc/openvpn/examples/sample-keys/server.crt.gz &gt; /etc/openvpn/server.crt</code></li>
+<li>server.key: <code>sudo cp /usr/share/doc/openvpn/examples/sample-keys/server.key /etc/openvpn/</code></li>
+<li>dh2048.pem: <code>sudo cp /usr/share/doc/openvpn/examples/sample-keys/dh2048.pem /etc/openvpn/</code></li>
+</ul>
+<h3 id="23-define-config">2.3 Define config</h3>
+<p>Edit <code>/etc/openvpn/server.conf</code>, similarly, the sample file is in <code>/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz</code></p>
+<p><em>An available configuration for &ldquo;Sid Meier&rsquo;s Civilization® VI&rdquo;:</em></p>
+<pre><code class="language-log">port 1194
+proto udp
+dev tap
+ca ca.crt
+cert server.crt
+key server.key
+dh dh2048.pem
+server 10.8.0.0 255.255.255.0
+client-to-client
+duplicate-cn
+keepalive 10 120
+user nobody
+group nogroup
+persist-key
+persist-tun
+verb 3
+comp-lzo no
+</code></pre>
+<h3 id="24-start-server">2.4 Start Server</h3>
+<pre><code class="language-bash">cd /etc/openvpn
+sudo openvpn --config server.conf
+</code></pre>
+<h3 id="25-check-status">2.5 Check Status</h3>
+<p>Execute <code>ifconfig</code> command and you can see:</p>
+<pre><code class="language-log">tap0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.8.0.1  netmask 255.255.255.0  broadcast 10.8.0.255
+        inet6 fe80::8053:cfff:fe8f:5df2  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 82:53:cf:8f:5d:f2  txqueuelen 100  (Ethernet)
+        RX packets 270745  bytes 66208047 (66.2 MB)
+        RX errors 0  dropped 921  overruns 0  frame 0
+        TX packets 4355  bytes 304866 (304.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+<h2 id="3-client">3. Client</h2>
+<p><em>Every client needs to do this, Take win10 as an example</em></p>
+<h3 id="31-install-openvpn">3.1 Install OpenVPN</h3>
+<p>Download and Install from: <a href="https://openvpn.net/community-downloads/">https://openvpn.net/community-downloads/</a></p>
+<h3 id="32-establish-pki">3.2 Establish PKI</h3>
+<p>Client also Needs to establish a PKI (public key infrastructure), Simply, you need to have <code>ca.crt</code>, <code>client.crt</code>, <code>client.key</code>, under <code>$INSTALL_PATH\OpenVPN\config\</code>.</p>
+<p>A sample file will be used here (it works but is <strong>not safe</strong>), please refer to <code>6.Link/OpenVPN detail</code> for details.</p>
+<p>Copy from Server on <code>/usr/share/doc/openvpn/examples/sample-keys/</code>:</p>
+<!-- raw HTML omitted -->
+<p><img src="../../../posts/static/Dedicated%20server%20use%20OpenVPN%20for%20LAN%20Multiplayer%20Game/client_pki.png" alt="client_pki"></p>
+<h3 id="33-define-config">3.3 Define config</h3>
+<p>Edit <code>$INSTALL_PATH\OpenVPN\config\client.ovpn</code>, similarly, the sample file is in <code>$INSTALL_PATH\OpenVPN\sample-config\client.ovpn</code></p>
+<p><em>An available configuration for &ldquo;Sid Meier&rsquo;s Civilization® VI&rdquo;:</em></p>
+<pre><code class="language-log">client
+dev tap
+proto udp
+remote $YOUR_SERVER_IP 1194
+ca ca.crt
+cert client.crt
+key client.key
+user nobody
+group nogroup
+persist-key
+persist-tun
+verb 3
+comp-lzo no
+key-direction 1
+</code></pre>
+<h3 id="34-start-client">3.4 Start Client</h3>
+<p>Start OpenVPN GUI from WIN_START and Right click on the connect button.</p>
+<!-- raw HTML omitted -->
+<p><img src="../../../posts/static/Dedicated%20server%20use%20OpenVPN%20for%20LAN%20Multiplayer%20Game/client_start.png" alt="client_start"></p>
+<h3 id="35-check-status">3.5 Check Status</h3>
+<p>After the connection is successful, there will be a prompt and the IP address assigned to the client will be reported.</p>
+<!-- raw HTML omitted -->
+<p><img src="../../../posts/static/Dedicated%20server%20use%20OpenVPN%20for%20LAN%20Multiplayer%20Game/client_start_ok.png" alt="client_start_ok"></p>
+<h2 id="4-verify">4. Verify</h2>
+<p>If both clients are started, you can verify whether they belong to the same LAN by ping.</p>
+<!-- raw HTML omitted -->
+<p><img src="../../../posts/static/Dedicated%20server%20use%20OpenVPN%20for%20LAN%20Multiplayer%20Game/client_ping.png" alt="client_ping"></p>
+<h2 id="5-other">5. Other</h2>
+<p><em>There are other steps you need to take for specific games like:</em></p>
+<h3 id="51-sid-meiers-civilization-vi">5.1 Sid Meier&rsquo;s Civilization® VI</h3>
+<p>Each client needs to use WinIPBroadcast and turn off the firewall.</p>
+<ul>
+<li>detail: <a href="https://blog.yllhwa.com/2023/02/24/%E6%96%87%E6%98%8E6%E8%81%94%E6%9C%BA%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E8%B7%B5/">https://blog.yllhwa.com/2023/02/24/%E6%96%87%E6%98%8E6%E8%81%94%E6%9C%BA%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E8%B7%B5/</a></li>
+</ul>
+<h3 id="52-stellaris">5.2 Stellaris</h3>
+<p>Nothing needs special attention.</p>
+<h3 id="53-7-days-to-die">5.3 7 Days To Die</h3>
+<p>It is more recommended to use Frp.</p>
+<h3 id="54-cities-skylines">5.4 Cities Skylines</h3>
+<p>It is more recommended to use Frp.</p>
+<h3 id="55-rimworld">5.5 RimWorld</h3>
+<p>Nothing needs special attention.</p>
+<h2 id="6-link">6. Link</h2>
+<ul>
+<li>Old method use Frp: <a href="https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/">https://causehhc.github.io/2021/04/use-frp-to-achieve-intranet-penetration/</a></li>
+<li>OpenVPN detail: <a href="https://openvpn.net/community-resources/how-to/">https://openvpn.net/community-resources/how-to/</a></li>
+<li>OpenVPN setup example1: <a href="https://zhou-yuxin.github.io/articles/2017/Linux%20%E6%90%AD%E5%BB%BAOpenVPN%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AE/index.html">https://zhou-yuxin.github.io/articles/2017/Linux%20%E6%90%AD%E5%BB%BAOpenVPN%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AE/index.html</a></li>
+<li>OpenVPN setup example2: <a href="https://blog.linux2.win/openvpn/">https://blog.linux2.win/openvpn/</a></li>
 </ul>
 
     </div>
