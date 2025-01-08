@@ -11,7 +11,8 @@ categories = ["Travel"]
 # 微小说：以自由之名
 
 <!-- ![](./static/Freedom%20Shadow/DSC_3970.jpg) -->
-![](../../../posts/static/Freedom%20Shadow/DSC_3970.jpg =x600)
+<!-- ![](../../../posts/static/Freedom%20Shadow/DSC_3970.jpg) -->
+<img src="../../../posts/static/Freedom%20Shadow/DSC_3970.jpg" alt="" width="600" height="auto">
 
 
 ## 序幕：跨年夜的车海
