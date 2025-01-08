@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 18 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jan 2025 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://causehhc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>In the Shadow of Freedom</title>
+      <link>https://causehhc.github.io/2025/01/freedom-shadow/</link>
+      <pubDate>Wed, 08 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2025/01/freedom-shadow/</guid>
+      <description>微小说：以自由之名 序幕：跨年夜的车海 2025年12月31日 繁华的城市夜幕降临，霓虹在车窗外流动。他们四个人——HHC（我）、静静、超强和小红</description>
+    </item>
+    
+    <item>
+      <title>Install ubuntu 22.04 and Nvdia</title>
+      <link>https://causehhc.github.io/2024/02/install-ubuntu-22.04-and-nvdia/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://causehhc.github.io/2024/02/install-ubuntu-22.04-and-nvdia/</guid>
+      <description>1. 目标机硬件参数 2. 制作ubuntu启动盘 使用rufus-3.19.exe将ubuntu-22.04.2-desktop-amd64.iso刷</description>
+    </item>
     
     <item>
       <title>Dedicated server use OpenVPN for LAN Multiplayer Game</title>

@@ -4,41 +4,76 @@
   
   <url>
     <loc>https://causehhc.github.io/categories/</loc>
-    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://causehhc.github.io/</loc>
-    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/</loc>
-    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <loc>https://causehhc.github.io/2025/01/freedom-shadow/</loc>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/tags/micro-novel/</loc>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://causehhc.github.io/posts/</loc>
-    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://causehhc.github.io/tags/</loc>
-    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/categories/travel/</loc>
+    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/2024/02/install-ubuntu-22.04-and-nvdia/</loc>
+    <lastmod>2024-02-24T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://causehhc.github.io/tags/ubuntu/</loc>
+    <lastmod>2024-02-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/</loc>
+    <lastmod>2024-02-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://causehhc.github.io/2024/02/dedicated-server-use-openvpn-for-lan-multiplayer-game/</loc>
     <lastmod>2024-02-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -67,13 +102,6 @@
   
   <url>
     <loc>https://causehhc.github.io/2021/06/stm32driver/</loc>
-    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://causehhc.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/</loc>
     <lastmod>2021-06-27T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
